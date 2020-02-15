@@ -1,0 +1,54 @@
+problem: need a program that can calculate and dsipaly the opopulation for each of the next five years
+
+user inputs: current population, birth rate, death rate, and immigration rate
+output: futurePopulation
+
+Assmptions:
+A valid user input is a number
+The generated futurePopulation data does not need to be stored elsewhere after it is displayed
+Once the futurePopulation reaches 0, it cannot recover and the algorhthim can terminate
+User inputs will not change once retrieved
+
+//retrieve valid inputs
+	//retrieve valid currentPopulation
+	while valid user input currentPopulation data has not been received
+		prompt user for currentPopulation in persons per seconds
+		if user input for currentPopulation is still invalid
+			output an error message
+
+	//retrieve valid birthRate
+	while valid user input birthRate data has not been received
+		prompt user for brithRate in persons per seconds
+		if user input for birthRate is still invalid
+			output an error message
+
+	//retrieve valid deathRate
+	while valid user input deathRate data has not been received
+		prompt user for deathRate in persons per seconds
+		if user input for deathRate is still invalid
+			output an error message
+
+	//retrieve valid immigrationRate
+	while valid user input immigrationRate data has not been received
+		prompt user for immigrationRate in persons per seconds
+		if user input for immigrationRate is still invalid
+			output an error message
+
+//calculate five year projections
+	secondsPerYear = 365 * 24 * 60 * 60
+
+	//calculate change rate in persons per year
+	changeRate = (birthRate + immigrationRate - deathRate) * secondsPerYear
+
+	//define futurePopulation for any variable yearsPassed
+	futurePopulation = yearsPassed * changeRate + currentPopulation
+
+//display data to user
+	for the next five yearsPassed
+		if the futurePopulaton for the current yearsPassed is greater than 0
+			output futurePopulation to the user display
+		otherwise
+			output 0 to the user display
+			if the yearsPassed is less than five
+				output a warning message
+			terminate processing
