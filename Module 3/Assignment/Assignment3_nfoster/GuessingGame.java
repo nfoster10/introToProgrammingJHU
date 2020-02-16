@@ -9,7 +9,7 @@ public class GuessingGame
 		boolean success = false;
 
 		System.out.print("\n\n\n");
-		System.out.print("Please provide a number 'N' to be the MAX number for the Guessing Game! \n\n\t");
+		System.out.print("Please provid a number 'N' to be the MAX number for the Guessing Game! \n\n\t");
 		int maxNumber = input.nextInt();
 		int randomNumber = (int)( maxNumber * Math.random() ) + 1;
 
