@@ -12,29 +12,48 @@ public class DisplayAsterisks
 
 		while(!validResponse)
 		{
-			validResponse = printAsterisks()
+			System.out.print("\n\n\n");
+			System.out.print("Enter max asterisks and choice (1 or 2) seperated by a blank space and then depress the return key.");
+			System.out.print("\n\n");
+			validResponse = printAsterisks(input.nextInt(), (short) input.nextInt());
 		}
 
 	}
 
 	public static boolean printAsterisks(int asterisks, short choice)
 	{
-		boolean validChoice = false;
+		boolean validChoice = true;
 
-		switch choice
+		System.out.println("\n\n");
+
+		switch(choice)
 		{
 			case CHOICE_1:
-				validChoice = true;
+				for(int i = 1; i <= asterisks; i++)
+				{
+					System.out.print("\t\t" + i + ": ");
+					for (int j = 0; j < i; j++)
+						System.out.print(" * ");
+					System.out.println();
+				}
 				break;
+
 			case CHOICE_2:
-				validChoice = true;
+				for(int i = asterisks; i > 0; i--)
+				{
+					System.out.print("\t\t" + (asterisks + 1 - i) + ": ");
+					for (int j = 0; j < i; j++)
+						System.out.print(" * ");
+					System.out.println();
+				}
 				break;
-			default
+
+			default:
+				System.out.print("\t\tInvalid Choice! Pick 1 or 2. Try again.");
+				System.out.println();
+				validChoice = false;
 				break;
 		}
-
 		return validChoice;
-
 	}
-
 }
