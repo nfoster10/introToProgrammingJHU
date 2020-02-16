@@ -8,7 +8,7 @@ public class Hare extends Racer
 		this.setName("Hare");
 	}
 
-	public void advance(int randomInput)
+	public int advance(int randomInput)
 	{
 		switch(randomInput)
 		{
@@ -36,6 +36,7 @@ public class Hare extends Racer
 				System.out.print("\nERROR\n");
 				break;
 		}
+		return this.getRacePosiiton();
 	}
 
 	public int performBigHop()

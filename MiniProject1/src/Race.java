@@ -5,29 +5,33 @@ import java.util.*;
 
 public class Race
 {
-	private Racer [] racers;
+	private Hare hare;
+	private Tortoise tortoise;
 	public int raceProgress;
 	public int raceLength;
 	
 
 	Race(int totalPositons)
 	{
-		this.racers = { new Hare(), new Tortoise()};
+		this.hare = new Hare();
+		this.tortoise = new Tortoise();
+
 		this.raceProgress = 0;
 		this.raceLength = totalPositons;
 	}
 
 	public Racer simulateRace()
 	{
-		Racer winner = NULL;
+		Racer winner = null;
 
-		while(winner == NULL)
+		while(winner == null)
 		{
 			raceProgress++;
 
-			for (Racer contender : racers)
-				if (contender.advance((int)(10 * Math.random() + 1)) >= raceLength)
-					winner = contender;
+				if (hare.advance((int)(10 * Math.random() + 1)) >= raceLength)
+					winner = hare;
+				if (winner == null && tortoise.advance((int)(10 * Math.random() + 1)) >= raceLength)
+					winner = tortoise;
 		}
 		return winner;
 	}

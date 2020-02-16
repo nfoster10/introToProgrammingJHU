@@ -45,7 +45,7 @@ public class Tortoise extends Racer
 		return newPosition;
 	}
 
-	public void performSlowPlod()
+	public int performSlowPlod()
 	{
 		int newPosition = this.getRacePosiiton();
 		newPosition += 1;
@@ -55,7 +55,7 @@ public class Tortoise extends Racer
 		return newPosition;
 	}
 
-	public void performSlip()
+	public int performSlip()
 	{
 		int newPosition = this.getRacePosiiton();
 		newPosition -= 6;
@@ -63,6 +63,7 @@ public class Tortoise extends Racer
 		if(newPosition <= 0)
 			newPosition = 1;
 			
+		this.raceHistoryMoves.add("SLIP");	
 		this.raceHistoryPositions.add(newPosition);
 		return newPosition;
 	}

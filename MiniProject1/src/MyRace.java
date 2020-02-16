@@ -9,7 +9,7 @@ public class MyRace
 		Scanner input = new Scanner(System.in);
 		boolean performAnotherRace = true;
 
-		do
+		while(performAnotherRace)
 		{
 			System.out.print("\n\nEnter the total number of positions of the race and then depress the Enter key. \n" );
 			Race race = new Race(input.nextInt());
@@ -25,9 +25,9 @@ public class MyRace
 			//	race.showHistory();
 
 			System.out.print("\n\nEnter 'y' for another race or any other key to end. \nThen depress the Enter key. \n" );
-			if(input.nextChar() != 'y')
+			if(input.next().charAt(0) != 'y')
 				performAnotherRace = false;
 
-		} while(performAnotherRace)
+		} 
 	}
 }
