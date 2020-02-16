@@ -3,7 +3,6 @@
 public class Racer
 {
 	private int racePosition;
-	private boolean isWinner;
 	private String name;
 	public ArrayList raceHistoryMoves;
 	public ArrayList raceHistoryPositions;
@@ -12,7 +11,6 @@ public class Racer
 	Racer()
 	{
 		racePosition = 1;
-		isWinner = false;
 		name = "Racer";
 		raceHistoryMoves = new ArrayList();
 		raceHistoryPositions = new ArrayList();
@@ -26,15 +24,6 @@ public class Racer
 	public void setName(String newName)
 	{
 		name = newName;
-	}
-
-	public boolean getIsWinner()
-	{
-		return isWinner;
-	}
-	public boolean setIsWinner(boolean winner)
-	{
-		isWinner = winner;
 	}
 
 	public int getRacePosiiton()

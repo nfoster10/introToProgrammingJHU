@@ -26,20 +26,14 @@ public class Race
 			raceProgress++;
 
 			for (Racer contender : racers)
-			{
 				if (contender.advance((int)(10 * Math.random() + 1)) >= raceLength)
-				{
-					contender.setIsWinner(true);
 					winner = contender;
-				}
-			}
 		}
-
 		return winner;
 	}
 
-	public void showHistory()
+	/*public void showHistory()
 	{
 
-	}
+	}*/
 }

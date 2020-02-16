@@ -21,8 +21,8 @@ public class MyRace
 			System.out.print("\n\nThe " + winner.getName() + " is the winner!");
 			System.out.print("\n\nEnter 'h' for race history or any other key to continue. \nThen depress the Enter key. \n" );
 
-			if(input.nextChar() == 'h')
-				race.showHistory();
+			//if(input.nextChar() == 'h')
+			//	race.showHistory();
 
 			System.out.print("\n\nEnter 'y' for another race or any other key to end. \nThen depress the Enter key. \n" );
 			if(input.nextChar() != 'y')

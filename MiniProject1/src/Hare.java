@@ -38,27 +38,57 @@ public class Hare extends Racer
 		}
 	}
 
-	public void performBigHop()
+	public int performBigHop()
 	{
-
+		int newPosition = this.getRacePosiiton();
+		newPosition += 9;
+			
+		this.raceHistoryMoves.add("BIP HOP");	
+		this.raceHistoryPositions.add(newPosition);
+		return newPosition;
 	}
 
-	public void performSmallHop()
+	public int performSmallHop()
 	{
-
+		int newPosition = this.getRacePosiiton();
+		newPosition += 1;
+			
+		this.raceHistoryMoves.add("SMALL HOP");	
+		this.raceHistoryPositions.add(newPosition);
+		return newPosition;
 	}
 
-	public void performBigSlip()
+	public int performBigSlip()
 	{
+		int newPosition = this.getRacePosiiton();
+		newPosition -= 12;
 
+		if(newPosition <= 0)
+			newPosition = 1;
+			
+		this.raceHistoryMoves.add("BIG SLIP");	
+		this.raceHistoryPositions.add(newPosition);
+		return newPosition;
 	}
-	public void performSmallSlip()
+	public int performSmallSlip()
 	{
+		int newPosition = this.getRacePosiiton();
+		newPosition -= 2;
 
+		if(newPosition <= 0)
+			newPosition = 1;
+			
+		this.raceHistoryMoves.add("SMALL SLIP");	
+		this.raceHistoryPositions.add(newPosition);
+		return newPosition;
 	}
-	public void performSleep()
+	public int performSleep()
 	{
-
+		int newPosition = this.getRacePosiiton();
+			
+		this.raceHistoryMoves.add("SLEEP");	
+		this.raceHistoryPositions.add(newPosition);
+		return newPosition;
 	}
 
 }
