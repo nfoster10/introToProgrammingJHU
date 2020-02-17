@@ -25,14 +25,55 @@ public class Race
 
 		while(winner == null)
 		{
+			this.showProgress(raceProgress);
 			raceProgress++;
 
 			if (hare.advance((int)(10 * Math.random() + 1)) >= raceLength)
 				winner = hare;
-			if (winner == null & tortoise.advance((int)(10 * Math.random() + 1)) >= raceLength)
+			if (tortoise.advance((int)(10 * Math.random() + 1)) >= raceLength)
+			{
+				if(winner != null)
+				{
+					winner = null;
+					break;
+				}
 				winner = tortoise;
+			}
 		}
 		return winner;
+	}
+	public void showProgress(int progress)
+	{
+		System.out.print("\n\tRace Progress:\n\t");
+		for (int i = 0; i < this.raceLength; i++)
+			System.out.printf("%-3d  ", (i + 1));
+		System.out.print("\n\t");
+
+		String display = new String();
+
+		for (int i = 1; i < this.raceLength; i++)
+		{
+			if(this.hare.raceHistoryPositions.get(progress) == i)
+			{
+				display = this.hare.raceHistoryPositions.get(progress) == this.tortoise.raceHistoryPositions.get(progress) ? 
+					"OUCH!":"H    ";
+				System.out.print(display);
+			}
+			else
+				System.out.print("     ");
+		}
+		System.out.print("\n\t");
+		for (int i = 1; i < this.raceLength; i++)
+		{
+			if(this.tortoise.raceHistoryPositions.get(progress) == i)
+			{
+				if (!display.equals("OUCH!"))
+					display = "T    ";
+				System.out.print(display);
+			}
+			else
+				System.out.print("     ");
+		}
 	}
 
 	public void showHistory()
@@ -43,6 +84,8 @@ public class Race
 		{
 			System.out.printf("\n%d:\t%d\t%s \t\t%d\t%s", i, hare.raceHistoryPositions.get(i), hare.raceHistoryMoves.get(i), 
 				tortoise.raceHistoryPositions.get(i), tortoise.raceHistoryMoves.get(i));
+			if (hare.raceHistoryPositions.get(i) == tortoise.raceHistoryPositions.get(i))
+				System.out.print("\t\tOUCH!");
 		}
 
 	}

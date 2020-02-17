@@ -19,9 +19,13 @@ public class MyRace
 			
 			Racer winner = race.simulateRace();
 
-			System.out.print("\n\nThe " + winner.getName() + " is the winner!");
-			System.out.print("\n\nEnter 'h' for race history or any other key to continue. \nThen depress the Enter key. \n" );
+			if (winner != null)
+				System.out.print("\n\nThe " + winner.getName() + " is the winner!");
+			else
+				System.out.print("\n\nIt's a TIE");
 
+
+			System.out.print("\n\nEnter 'h' for race history or any other key to continue. \nThen depress the Enter key. \n" );
 			if(input.next().charAt(0) == 'h')
 				race.showHistory();
 
