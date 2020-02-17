@@ -87,7 +87,7 @@ public class Hare extends Racer
 	{
 		int newPosition = this.getRacePosiiton();
 			
-		this.raceHistoryMoves.add("SLEEP");	
+		this.raceHistoryMoves.add("SLEEP\t");	
 		this.raceHistoryPositions.add(newPosition);
 		return newPosition;
 	}

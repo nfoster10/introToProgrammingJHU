@@ -15,6 +15,7 @@ public class Racer
 		racePosition = 1;
 		name = "Racer";
 		raceHistoryMoves = new ArrayList<String>();
+		this.raceHistoryMoves.add("START\t");
 		raceHistoryPositions = new ArrayList<>();
 		this.raceHistoryPositions.add(1);
 

@@ -38,11 +38,12 @@ public class Race
 
 	public void showHistory()
 	{
-			System.out.print("\n\tHare\tTortoise");
+			System.out.print("\n\tHare\t\t\t\tTortoise");
 
 		for (int i = 0; i <= raceProgress; i++)
 		{
-			System.out.printf("\n%d:\t%d \t%d", i, hare.raceHistoryPositions.get(i), tortoise.raceHistoryPositions.get(i));
+			System.out.printf("\n%d:\t%d\t%s \t\t%d\t%s", i, hare.raceHistoryPositions.get(i), hare.raceHistoryMoves.get(i), 
+				tortoise.raceHistoryPositions.get(i), tortoise.raceHistoryMoves.get(i));
 		}
 
 	}
