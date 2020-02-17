@@ -4,7 +4,7 @@ public class Tortoise extends Racer
 {
 	Tortoise()
 	{
-		this.setName("Tortoise");
+		this.setName("TORTOISE");
 	}
 
 	public int advance(int randomInput)

@@ -5,7 +5,7 @@ public class Hare extends Racer
 
 	Hare()
 	{
-		this.setName("Hare");
+		this.setName("HARE");
 	}
 
 	public int advance(int randomInput)
