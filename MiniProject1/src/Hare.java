@@ -38,7 +38,6 @@ public class Hare extends Racer
 		}
 		return this.getRacePosiiton();
 	}
-
 	public int performBigHop()
 	{
 		int newPosition = this.getRacePosiiton();
@@ -48,7 +47,6 @@ public class Hare extends Racer
 		this.raceHistoryPositions.add(newPosition);
 		return newPosition;
 	}
-
 	public int performSmallHop()
 	{
 		int newPosition = this.getRacePosiiton();
@@ -58,7 +56,6 @@ public class Hare extends Racer
 		this.raceHistoryPositions.add(newPosition);
 		return newPosition;
 	}
-
 	public int performBigSlip()
 	{
 		int newPosition = this.getRacePosiiton();
@@ -91,9 +88,4 @@ public class Hare extends Racer
 		this.raceHistoryPositions.add(newPosition);
 		return newPosition;
 	}
-
 }
-
-
-
-

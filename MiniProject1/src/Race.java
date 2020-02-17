@@ -10,7 +10,6 @@ public class Race
 	public int raceProgress;
 	public int raceLength;
 	
-
 	Race(int totalPositons)
 	{
 		this.hare = new Hare();
@@ -28,10 +27,10 @@ public class Race
 		{
 			raceProgress++;
 
-				if (hare.advance((int)(10 * Math.random() + 1)) >= raceLength)
-					winner = hare;
-				if (winner == null & tortoise.advance((int)(10 * Math.random() + 1)) >= raceLength)
-					winner = tortoise;
+			if (hare.advance((int)(10 * Math.random() + 1)) >= raceLength)
+				winner = hare;
+			if (winner == null & tortoise.advance((int)(10 * Math.random() + 1)) >= raceLength)
+				winner = tortoise;
 		}
 		return winner;
 	}

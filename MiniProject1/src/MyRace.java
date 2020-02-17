@@ -28,7 +28,6 @@ public class MyRace
 			System.out.print("\n\nEnter 'y' for another race or any other key to end. \nThen depress the Enter key. \n" );
 			if(input.next().charAt(0) != 'y')
 				performAnotherRace = false;
-
 		} 
 	}
 }

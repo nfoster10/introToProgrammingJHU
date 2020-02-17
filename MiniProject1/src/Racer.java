@@ -9,7 +9,6 @@ public class Racer
 	public ArrayList<String> raceHistoryMoves;
 	public ArrayList<Integer> raceHistoryPositions;
 
-
 	Racer()
 	{
 		racePosition = 1;
@@ -20,7 +19,6 @@ public class Racer
 		this.raceHistoryPositions.add(1);
 
 	}
-
 	public String getName()
 	{
 		return name;
@@ -29,7 +27,6 @@ public class Racer
 	{
 		name = newName;
 	}
-
 	public int getRacePosiiton()
 	{
 		return racePosition;
