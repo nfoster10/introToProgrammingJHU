@@ -23,7 +23,6 @@ public class Race
 	{
 		Racer winner = null;
 
-
 		System.out.print("\nAND THEY'RE OFF!");
 		this.showProgress(raceProgress);
 
@@ -89,7 +88,7 @@ public class Race
 
 	public void showHistory()
 	{
-			System.out.print("\n\tHare\t\t\t\tTortoise");
+		System.out.print("\n\tHare\t\t\t\tTortoise");
 
 		for (int i = 0; i <= raceProgress; i++)
 		{
