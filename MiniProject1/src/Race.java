@@ -30,14 +30,20 @@ public class Race
 
 				if (hare.advance((int)(10 * Math.random() + 1)) >= raceLength)
 					winner = hare;
-				if (winner == null && tortoise.advance((int)(10 * Math.random() + 1)) >= raceLength)
+				if (winner == null & tortoise.advance((int)(10 * Math.random() + 1)) >= raceLength)
 					winner = tortoise;
 		}
 		return winner;
 	}
 
-	/*public void showHistory()
+	public void showHistory()
 	{
+			System.out.print("\n\tHare\tTortoise");
 
-	}*/
+		for (int i = 0; i <= raceProgress; i++)
+		{
+			System.out.printf("\n%d:\t%d \t%d", i, hare.raceHistoryPositions.get(i), tortoise.raceHistoryPositions.get(i));
+		}
+
+	}
 }

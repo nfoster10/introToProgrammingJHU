@@ -16,6 +16,7 @@ public class Racer
 		name = "Racer";
 		raceHistoryMoves = new ArrayList<String>();
 		raceHistoryPositions = new ArrayList<>();
+		this.raceHistoryPositions.add(1);
 
 	}
 
