@@ -1,13 +1,31 @@
+import java.util.Scanner;
+
 public class PrintMonth
 {
   public static void main (String [] args)
   {
+    Scanner input = new Scanner(System.in);
+    boolean done = false;
 
+    System.out.print("\n\nThis program will print a given month from a given year");
+
+    while(!done)
+    {
+      System.out.print("\n\nEnter a month (1-12) and a year seperated by a space. Then depress the Enter key.");
+      printMonthCalendar(input.nextInt(), input.nextInt());
+
+      System.out.print("\n\nEnter 'd' for done or any other key. Then depress the Enter key to continue.");
+      if(input.next().charAt() == 'd')
+        done = true;
+    }
+
+    System.out.print("\n\nDONE.");
   }
 
   public static void printMonthCalendar(int m, int y)
   {
-
+    printMonthHeader(m,y);
+    printMonthBody(m,y);
   }
 
   public static void printMonthHeader(int m, int y)
@@ -22,7 +40,10 @@ public class PrintMonth
 
   public static String getMonthName(int m)
   {
+    String [] months = new String[]{"January", "February", "March", "April", "May", "June", 
+      "July", "August", "September", "October", "Novermber", "December"};
 
+    return m >0 && m <= 12 ? months[m-1] : "INVALID";
   }
 /****
   The method getStartDay() implements Zeller's Algorithm for determining the day of the
@@ -67,6 +88,6 @@ public class PrintMonth
 
   public static void isLeapYear(int y)
   {
-    
+
   }
 }
