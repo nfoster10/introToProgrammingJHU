@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class TemperatureConversion
+{
+  public static void main( String [] args )
+  {
+    int userChoice = 0;                           // User selection: 1, 2, 3
+
+    Scanner input = new Scanner( System.in );     // Create a Scanner to obtain user input
+
+    while( userChoice != 3 )
+    {
+      System.out.print( "Enter 1 to convert F->C, 2 to convert C->F, 3 to quit: " );
+      userChoice = input.nextInt();              // Read user input
+
+      convertTemperature(userChoice);
+      
+    }
+  }
+
+  public static void convertTemperature(int userChoice)
+  {
+    float temperatureFahrenheit = 0;              // Fahrenheit temperature
+    float temperatureCelsius = 0;                 // Celsius temperature
+    Scanner input = new Scanner( System.in );     // Create a Scanner to obtain user input
+
+    switch( userChoice )
+      {
+        case 1:     // Convert Fahrenheit to Celsius
+                    System.out.print( "Enter a Fahrenheit temperature: " );
+                    temperatureFahrenheit = input.nextFloat();
+                    temperatureCelsius = 5F/9F * ( temperatureFahrenheit - 32F );
+                    System.out.println( temperatureFahrenheit + " degrees Fahrenheit is " + temperatureCelsius + " degrees Celsius" );
+                    break;
+        case 2:     // Convert Celsius to Fahrenheit
+                    System.out.print( "Enter a Celsius temperature: " );
+                    temperatureCelsius = input.nextFloat();
+                    temperatureFahrenheit = 9F/5F * temperatureCelsius + 32F;
+                    System.out.println( temperatureCelsius + " degrees Celsius is " + temperatureFahrenheit + " degrees Fahrenheit" );
+                    break;
+        case 3:     // End Program
+                    System.out.println( "Bye Bye" );
+                    break;
+        default:    // Invalid Data Entered
+                    System.out.println( "Invalid Data: You must enter 1, 2, or 3" );           
+      }
+  }
+}
+
+I typically like to avoid minimizing taking user inputs outside the main function to avoid having to initialize another Scanner object. I also prefer to have all inputs only coming from one spot for simplicity but sometimes this is unavoidable. Without having to re-write too much code, just making one function/method "convert" to remove the switch logic from the main function made the most sense. It maintains, if not improves, the readability of the code. 
+Additionally I purposefully did not include a comment block describing the function. In my company, we actually avoid these comments with the assumption that well written code with well named functions/variables should be easy enough to read. In large scale development projects integrating many systems, incorrect/unreliable comments have actually become a problem when maintaining code or even adding more features/capabilities. 
+
