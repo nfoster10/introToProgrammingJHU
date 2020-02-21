@@ -1,4 +1,29 @@
+public class PrintMonth
+{
+  public static void main (String [] args)
+  {
 
+  }
+
+  public static void printMonthCalendar(int m, int y)
+  {
+
+  }
+
+  public static void printMonthHeader(int m, int y)
+  {
+
+  }
+
+  public static void printMonthBody(int m, int y)
+  {
+
+  }
+
+  public static String getMonthName(int m)
+  {
+
+  }
 /****
   The method getStartDay() implements Zeller's Algorithm for determining the day of the
   week the first day of a month is. The method adjusts Zeller's numbering scheme
@@ -34,3 +59,14 @@
         
         return dayNum;
   }
+
+  public static void getDaysInMonth(int m, int y)
+  {
+
+  }
+
+  public static void isLeapYear(int y)
+  {
+    
+  }
+}
