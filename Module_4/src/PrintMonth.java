@@ -30,12 +30,39 @@ public class PrintMonth
 
   public static void printMonthHeader(int m, int y)
   {
+    String month = getMonthName(m);
+    System.out.printf("\n\n\t\t%s  %d", month, y);
+
+    System.out.printf("\n-----------------------------");
+    System.out.printf("\n Sun Mon Tue Wed Thu Fri Sat ");
 
   }
 
   public static void printMonthBody(int m, int y)
   {
+    int startDay = getStartDay(m, 1, y);
+    startDay = startDay == 7? 0 : startDay;
 
+    int weekDayCounter = 0;
+
+    for(int i = 0; i < startDay; i++)
+    {
+      System.out.printf("     ");//&-4d");
+      weekDayCounter++;
+    }
+
+
+    for(int i = 0; i < getDaysInMonth(m, y); i++)
+    {
+      System.out.printf("%-4d", (i + 1));
+      weekDayCounter++;
+
+      if (weekDayCounter == 7)
+      {
+        weekDayCounter = 0;
+        System.out.println();
+      }
+    }
   }
 
   public static String getMonthName(int m)
@@ -83,7 +110,7 @@ public class PrintMonth
 
   public static void getDaysInMonth(int m, int y)
   {
-
+    
   }
 
   public static void isLeapYear(int y)
