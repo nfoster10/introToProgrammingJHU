@@ -1,18 +1,18 @@
 import java.util.Scanner;
 
-public class PrintYear
+public class PrintMonth
 {
   public static void main (String [] args)
   {
     Scanner input = new Scanner(System.in);
     boolean done = false;
 
-    System.out.print("\n\nThis program will print a given month from a given year");
+    System.out.print("\n\nThis program will print a month from a given month and year");
 
     while(!done)
     {
-      System.out.print("\n\nEnter a year. Then depress the Enter key:\t");
-      printYearCalendar(input.nextInt());
+      System.out.print("\n\nEnter a month (1-12) and a year seperated by a space. Then depress the Enter key:\t");
+      printMonthCalendar(input.nextInt(), input.nextInt());
 
       System.out.print("\n\nEnter 'd' for done or any other key to print another month.\n" + 
                           " Then depress the Enter key to continue:\t");
@@ -23,21 +23,9 @@ public class PrintYear
     System.out.print("\n\nDONE.\n\n");
   }
 
-  /*
-	PrintYear::printYearCalendar() prints a calendar for an entire input year 'yearToPrint'
-	Pre-conditions: yearToPrint is greater than 0;
-	Post-conditions: a ycalendar is output to the terminal
-  */
-  public static void printYearCalendar(int yearToPrint)
-  {
-  	for(int month = 1; month <= 12; month++)
-  	{
-  		printMonthCalendar(month, yearToPrint);
-  	}
-  }
 
   /*
-  PrintYear::printMonthCalendar() prints a month header and a month body from an input month 'm' and an input year 'y'.
+  PrintMonth::printMonthCalendar() prints a month header and a month body from an input month 'm' and an input year 'y'.
   Pre-conditions: m is 1-12; y is greater than 0;
   Post-condition: a month header and month body is output to the terminal
   */
@@ -48,7 +36,7 @@ public class PrintYear
   }
 
   /*
-  PrintYear::printMonthHeader() is called by printMonthCalendar. It prints the header of a calendar for input month 'm' 
+  PrintMonth::printMonthHeader() is called by printMonthCalendar. It prints the header of a calendar for input month 'm' 
   and an input year 'y'.
   Pre-conditions: m is 1-12; y is greater than 0
   Post-conditions: a month header is output to the terminal
@@ -64,7 +52,7 @@ public class PrintYear
   }
 
   /*
-  PrintYear::printMonthBody() is called by printMonthCalendar. It prints the body of a calendar for input month 'm' 
+  PrintMonth::printMonthBody() is called by printMonthCalendar. It prints the body of a calendar for input month 'm' 
   and an input year 'y'.
   Pre-conditions: m is 1-12; y is greater than 0
   Post-conditions: a month body is output to the terminal
@@ -96,8 +84,9 @@ public class PrintYear
     }
   }
 
+
   /*
-  PrintYear::getMonthName() returns a string object for a valid input integer month 'm' set equal to the string literal 
+  PrintMonth::getMonthName() returns a string object for a valid input integer month 'm' set equal to the string literal 
   corresponding to that month from a list of months. If the input is invalid, it returns invalid.
   Pre-conditions: m is 1-12
   Post-conditions: String month name returned for input month 'm'
@@ -145,8 +134,9 @@ public class PrintYear
         return dayNum;
   }
 
+
   /*
-  PrintYear::getDaysInMonth() returns integer value daysInMonth which is the number of days in the month 
+  PrintMonth::getDaysInMonth() returns integer value daysInMonth which is the number of days in the month 
   for an input month 'm' and year 'y'
   Pre-conditions: m is 1-12, y is greater than 0
   Post-conditons: daysInMonth returned
@@ -155,35 +145,36 @@ public class PrintYear
   {
     int daysInMonth = 0;
 
-    switch (m)
+     switch (m)
     {
-    	case 1:
-    	case 3:
-    	case 5:
-    	case 7:
-    	case 8:
-    	case 10:
-    	case 12:
-    		daysInMonth = 31;
-    		break;
-    	case 4:
-    	case 6:
-    	case 9:
-    	case 11:
-    		daysInMonth = 30;
-    		break;
-    	case 2:
-    		daysInMonth = isLeapYear(y) ? 29 : 28;
-    		break;
-    	default:
-    		break;
+      case 1:
+      case 3:
+      case 5:
+      case 7:
+      case 8:
+      case 10:
+      case 12:
+        daysInMonth = 31;
+        break;
+      case 4:
+      case 6:
+      case 9:
+      case 11:
+        daysInMonth = 30;
+        break;
+      case 2:
+        daysInMonth = isLeapYear(y) ? 29 : 28;
+        break;
+      default:
+        break;
     }
 
     return daysInMonth;
   }
 
+
   /*
-  PrintYear:isLeapYear() returns boolean value isLeapYear which is true if the input year 'y' is a leap year 
+  PrintMonth:isLeapYear() returns boolean value isLeapYear which is true if the input year 'y' is a leap year 
   or false if the input year 'y' is not a leap year.
   Pre-conditons: y is greater than 0;
   Post-conditions: isLeapYear returned
