@@ -7,16 +7,16 @@ public class MorseCodeTranslator
 		"1","2","3","4","5","6","7","8","9","0"},
 		{".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...",
 		"-","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----"}};
-	private static final Scanner input = new Scanner(System.in);
 
 	public static void main (String [] args)
 	{
 		String userInput = new String();
 		String translation = new String();
+		Scanner input = new Scanner(System.in);
 
 		while (!userInput.equals("done"))
 		{
-			System.out.printf("\n\nEnter 1 for Morse Code -> English, 2 for English -> Morse Code translation, or done to end: ");
+			System.out.printf("\n\nEnter 1(.----) for Morse Code -> English, 2(..---) for English -> Morse Code translation, or done to end: ");
 			userInput = input.nextLine();
 
 			switch (userInput)
@@ -33,23 +33,31 @@ public class MorseCodeTranslator
 					translation = MorseCodeTranslator.translateEnglishToMorse(getEnglishPhrase(input.nextLine()));
 					break;
 				case "done":
-					translation = "DONE"; //System.out.printf("\n\nDONE\n\n");
+					translation = "DONE"; 
 					break;
 				default:
-					translation = "INVALID input"; //System.out.printf("\n\nINVALID input.");
+					translation = "INVALID input"; 
 					break;
 			}
-
 			System.out.printf("\n\nTranslation: %s\n\n", translation);
 		}
 	}
 
+	//MorseCodeTranslator::getMorseCodePhrase() takes a user input Morse Code phrase and outputs a String array equivalent 
+	//of the user input string 'userMorseCodePhrase' that has been normalzied to be translated.
+	//pre-conditions: the input phrase is morse code characters separated by spaces and words separated by pipes
+	//post-conditions: an array of Strings for each morse character is returned
 	public static String [] getMorseCodePhrase(String userMorseCodePhrase)
 	{
 		String [] normalizedMorseCodePhrase = userMorseCodePhrase.split("\\s+");
 
 		return normalizedMorseCodePhrase;
 	}
+
+	//MorseCodeTranslator::translateMorseToEnglish() takes a normalized string array of a morse code and outputs a string
+	//object of the morse code in English
+	//pre-conditons: morseCodePhrase is normalized
+	//post-conditions: an english translation or error message is output in translatedMorseCodePhrase
 	public static String translateMorseToEnglish(String [] morseCodePhrase)
 	{
 		String translatedMorseCodePhrase = new String();
@@ -76,11 +84,20 @@ public class MorseCodeTranslator
 		return translatedMorseCodePhrase;
 	}
 
+	//MorseCodeTranslator::getEnglishPhrase() takes a user input english phrase and outputs a String array equivalent 
+	//of the user input string 'userEnglishPhrase' that has been normalzied to be translated.
+	//pre-conditions: the input phrase is english words
+	//post-conditions: an array of Strings for each english word is returned
 	public static String [] getEnglishPhrase(String userEnglishPhrase)
 	{
 		String [] normalizedEnglishPhrase = userEnglishPhrase.split("\\s+");
 		return normalizedEnglishPhrase;
 	}
+
+	//MorseCodeTranslator::translateEnglishToMorse() takes a normalized string array of a english words and outputs a string
+	//object of the morse code in morse code
+	//pre-conditons: englishPhrase is normalized
+	//post-conditions: a morse code translation or error message is output in translatedEnglishPhrase
 	public static String translateEnglishToMorse(String [] englishPhrase)
 	{
 		String translatedEnglishPhrase = new String();
@@ -105,7 +122,7 @@ public class MorseCodeTranslator
 				if (!characterFound)
 					translatedEnglishPhrase = translatedEnglishPhrase + "ERROR: Character not found!";
 			}
-			translatedEnglishPhrase = translatedEnglishPhrase + " | ";
+			translatedEnglishPhrase = translatedEnglishPhrase + "| ";
 		}
 
 		return translatedEnglishPhrase;
