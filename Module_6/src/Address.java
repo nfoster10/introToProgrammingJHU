@@ -83,6 +83,7 @@ public class Address
 
 		return validData;
 	}
+	
 	public String getZipCode()
 	{
 		return this.zipCode;

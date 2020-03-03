@@ -81,15 +81,12 @@ public class Employee
 			}
 
 			isValidDate = isValidDate? this.hireDate.setMonth(intFormattedInputEmployeeStartDate[0]) : isValidDate;
-			isValidDate = isValidDate? this.hireDate.setDay(intFormattedInputEmployeeStartDate[1]) : isValidDate;
 			isValidDate = isValidDate? this.hireDate.setYear(intFormattedInputEmployeeStartDate[2]) : isValidDate;
+			isValidDate = isValidDate? this.hireDate.setDay(intFormattedInputEmployeeStartDate[1]) : isValidDate;
 		}
 		else
 			isValidDate = false;
 
 		return isValidDate;
-
 	}
-
-
 }

@@ -17,6 +17,9 @@ public class GatherEmployeeData
 			System.out.printf("\n\nEnter 'y' to enter Employee data or 'n' to end. \nThen depress the Enter key: ");
 			isNotDone = input.nextLine().charAt(0);
 
+			//if the input is not y or n, output error
+			//if the input is n, break
+			//if the input is y, continue
 			if (isNotDone != 'y' && isNotDone != 'n')
 				System.out.printf("\n\nINVALID input");
 			else if (isNotDone == 'n')
@@ -28,7 +31,7 @@ public class GatherEmployeeData
 				do
 				{
 					if(dataInvalid){
-						dataInvalid = false;
+						dataInvalid = false; //must reset in order to re-enter data
 						System.out.print("\n\nINVALID INPUT - Please try again!");
 					}
 
