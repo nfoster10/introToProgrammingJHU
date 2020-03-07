@@ -28,7 +28,7 @@ public class GatherEmployeeData
 			{
 				employees.add(new Employee());
 
-				do
+				do //get Employee number
 				{
 					if(dataInvalid){
 						dataInvalid = false; //must reset in order to re-enter data
@@ -39,7 +39,7 @@ public class GatherEmployeeData
 					dataInvalid = dataInvalid? dataInvalid : !employees.get(numberOfEmployees).setEmployeeNumber(input.nextLine());
 				}while(dataInvalid);
 
-				do
+				do //get employee name
 				{
 					if(dataInvalid){
 						dataInvalid = false;
@@ -50,7 +50,7 @@ public class GatherEmployeeData
 					dataInvalid = dataInvalid? dataInvalid : !employees.get(numberOfEmployees).setEmployeeName(input.nextLine());
 				}while(dataInvalid);
 
-				do
+				do //get employee address
 				{
 					if(dataInvalid){
 						dataInvalid = false;
@@ -69,7 +69,7 @@ public class GatherEmployeeData
 				}while(dataInvalid);
 				employees.get(numberOfEmployees).setEmployeeAddress(tempAddress);
 
-				do
+				do //get employee start date
 				{
 					if(dataInvalid){
 						dataInvalid = false;
