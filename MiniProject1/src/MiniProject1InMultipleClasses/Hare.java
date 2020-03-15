@@ -1,13 +1,17 @@
 //This class is a child of Racer and defines Hare
-
+//This class will rename the object to HARE and define the movement for the hare
 public class Hare extends Racer
 {
 
-	Hare()
+	Hare() //class concatenator
 	{
 		this.setName("HARE");
 	}
 
+	//Hare::advance() takes a random input from 1-10 inclusive, updates the position of the hare per the random 
+	//input as defined in the MiniProject1 document.
+	//precondition: randomInput is between 1 and 10 inclusive
+	//postcondiotn: the current positon after the hare has advanced is returned
 	public int advance(int randomInput)
 	{
 		switch(randomInput)
@@ -38,15 +42,19 @@ public class Hare extends Racer
 		}
 		return this.getRacePosiiton();
 	}
+
+	//Hare::performBigHop() moves the hare forward 9 positons, returns this value and stores move/position history
 	public int performBigHop()
 	{
 		int newPosition = this.getRacePosiiton();
 		newPosition += 9;
 			
-		this.raceHistoryMoves.add("BIP HOP");	
+		this.raceHistoryMoves.add("BIG HOP");	
 		this.raceHistoryPositions.add(newPosition);
 		return newPosition;
 	}
+
+	//Hare::performSmallHop() moves the hare forward 1 positon, returns this value and stores move/positon history
 	public int performSmallHop()
 	{
 		int newPosition = this.getRacePosiiton();
@@ -56,6 +64,9 @@ public class Hare extends Racer
 		this.raceHistoryPositions.add(newPosition);
 		return newPosition;
 	}
+
+	//Hare::performBigSlip() moves the hare backward 12 positions, returns this value and stores move/position history
+	//if the hare slips below 0, the position is defaulted to 1.
 	public int performBigSlip()
 	{
 		int newPosition = this.getRacePosiiton();
@@ -68,6 +79,9 @@ public class Hare extends Racer
 		this.raceHistoryPositions.add(newPosition);
 		return newPosition;
 	}
+
+	//Hare::performSmallSlip() moves the hare backward 2 positions, returns this value and stores move/position history
+	//if the hare slips below 0, the position is defaulted to 1
 	public int performSmallSlip()
 	{
 		int newPosition = this.getRacePosiiton();
@@ -80,6 +94,8 @@ public class Hare extends Racer
 		this.raceHistoryPositions.add(newPosition);
 		return newPosition;
 	}
+
+	//Hare::performSleep() leaves the hare at current posiiton, returns this value and stores move/positon history
 	public int performSleep()
 	{
 		int newPosition = this.getRacePosiiton();

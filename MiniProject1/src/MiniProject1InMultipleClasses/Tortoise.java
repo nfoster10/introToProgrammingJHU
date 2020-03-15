@@ -1,12 +1,16 @@
 //This class is a child of Racer and defines Tortoise
-
+//This class will rename the object to TORTOISE and define the movement for the tortoise
 public class Tortoise extends Racer
 {
-	Tortoise()
+	Tortoise() //class concatnator
 	{
 		this.setName("TORTOISE");
 	}
 
+	//Tortoise::advance() takes a random input from 1-10 inclusive, updates the position of the tortoise per the random 
+	//input as defined in the MiniProject1 document.
+	//precondition: randomInput is between 1 and 10 inclusive
+	//postcondiotn: the current positon after the hare has advanced is returned
 	public int advance(int randomInput)
 	{
 		switch(randomInput)
@@ -33,6 +37,8 @@ public class Tortoise extends Racer
 		}
 		return this.getRacePosiiton();
 	}
+
+	//Tortoise::performFastPlod() moves the tortoise forward 3 positons, returns this value and stores move/position history
 	public int performFastPlod()
 	{
 		int newPosition = this.getRacePosiiton();
@@ -42,6 +48,8 @@ public class Tortoise extends Racer
 		this.raceHistoryPositions.add(newPosition);
 		return newPosition;
 	}
+
+	//Tortoise::performSlowPlod() moves the tortoise forward 1 positons, returns this value and stores move/position history
 	public int performSlowPlod()
 	{
 		int newPosition = this.getRacePosiiton();
@@ -51,6 +59,8 @@ public class Tortoise extends Racer
 		this.raceHistoryPositions.add(newPosition);
 		return newPosition;
 	}
+
+	//Tortoise::performSlip() moves the tortoise backward 6 positons, returns this value and stores move/position history
 	public int performSlip()
 	{
 		int newPosition = this.getRacePosiiton();
