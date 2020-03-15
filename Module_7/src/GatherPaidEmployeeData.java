@@ -35,7 +35,6 @@ public class GatherPaidEmployeeData
 				if (salaryOrHourly == 's')
 				{
 					employees.add(new SalariedEmployee());
-
 					getStandardEmployeeData(numberOfEmployees);
 
 					do //get employee salary
@@ -55,7 +54,6 @@ public class GatherPaidEmployeeData
 				else if (salaryOrHourly == 'h')
 				{
 					employees.add(new HourlyEmployee());
-
 					getStandardEmployeeData(numberOfEmployees);
 
 					do //get employee hourly rate

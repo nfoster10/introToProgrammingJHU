@@ -6,6 +6,11 @@ public class SalariedEmployee extends Employee
 	{
 		this.salary = 0;
 	}
+	public String toString()
+	{
+		return super.toString() +
+			String.format("\n\tYearly Salary: $%d", this.salary);
+	}
 
 	public boolean setSalary(int inputSalary)
 	{

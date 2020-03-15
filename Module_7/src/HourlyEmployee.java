@@ -7,6 +7,16 @@ public class HourlyEmployee extends Employee
 	HourlyEmployee()
 	{
 		this.hourlyRate = 0;
+		this.averageHoursWorkedPerWeek = 0;
+		this.totalEarningsPerWeek = 0;
+	}
+	public String toString()
+	{
+		return super.toString() +
+			String.format("\n\tHourly Rate: $%.2f", this.hourlyRate) +
+			String.format("\n\tAverage Hours Worked Per Week: %.1f", this.averageHoursWorkedPerWeek) +
+			String.format("\n\tAverage Weekly Pay: $%.2f", this.totalEarningsPerWeek) +
+			String.format("\n\tYearly Pay Estimate: $%d", (int) this.getTotalEarningsPerYear());
 	}
 
 	public boolean setHourlyRate(double inputHourlyRate)
