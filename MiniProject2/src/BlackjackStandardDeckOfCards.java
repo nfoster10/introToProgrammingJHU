@@ -22,6 +22,22 @@ public class BlackjackStandardDeckOfCards
 		}
 	}
 
+	public boolean isEmpty()
+	{
+		boolean isEmpty = true;
+
+		for(int cardIterator = 0; cardIterator < standardDeckOfCards.length; cardIterator++)
+		{
+			if(standardDeckOfCards[cardIterator].isCardInDeck())
+			{
+				isEmpty = false;
+				break;
+			}
+		}
+
+		return isEmpty;
+	}
+
 	public BlackjackCard getRandomCardFromDeck()
 	{
 		ArrayList<BlackjackCard> currentCardsInDeck = this.getCurrentCardsInDeck();
@@ -31,6 +47,7 @@ public class BlackjackStandardDeckOfCards
 
 		return cardRetreived;
 	}
+
 	private void removeCardFromDeck(BlackjackCard cardToRemove)
 	{
 		for(int cardIterator = 0; cardIterator < standardDeckOfCards.length; cardIterator++)
@@ -50,5 +67,4 @@ public class BlackjackStandardDeckOfCards
 
 		return currentCardsInDeck;
 	}
-
 }

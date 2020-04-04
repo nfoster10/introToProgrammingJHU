@@ -10,6 +10,7 @@ public class BlackjackPlayer extends BlackjackParticipant
 		this.playerMoney = 0;
 		this.currentBet = 0;
 	}
+
 	BlackjackPlayer(double buyIn)
 	{
 		this.playerMoney = buyIn;
@@ -39,11 +40,13 @@ public class BlackjackPlayer extends BlackjackParticipant
 		this.playerMoney += this.currentBet;
 		this.currentBet = 0;
 	}
+
 	public void lose()
 	{
 		this.playerMoney -= this.currentBet;
 		this.currentBet = 0;
 	}
+	
 	public void tie()
 	{
 		this.currentBet = 0;

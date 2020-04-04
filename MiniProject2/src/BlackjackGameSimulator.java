@@ -1,15 +1,10 @@
 import java.util.*;
 import java.io.*; 
 
-
 public class BlackjackGameSimulator
 {
 	public static void main (String [] elmo)
 	{
-		//assumptions:
-			//new deck for each round
-			//only use one deck of cards
-			//dealer will stay at a soft 17 (soft 17 is ACE + 6)
 		Scanner input = new Scanner(System.in);
 		boolean playAnotherBlackjackGame = true;
 		char userInputPlayAnotherBlackjackGame;
@@ -96,8 +91,8 @@ public class BlackjackGameSimulator
 				System.out.printf("\n\n\tPlayer #%d hand: " + player.showHand(0), playerIterator);
 				System.out.printf("\n\tPlayer #%d score: %d", playerIterator, player.getCurrentScore());
 
-					//check for blackjack and terminate if blackjack
-						//ACE is whatever to win
+				//check for blackjack and terminate if blackjack
+				//ACE is whatever to win
 				if(player.getIsBlackjack())
 				{
 					System.out.printf("\n\tBLACKJACK for Player#%d!", playerIterator);
@@ -130,8 +125,13 @@ public class BlackjackGameSimulator
 						System.out.printf("\n\tPlayer #%d score: %d\n", playerIterator, player.getCurrentScore());
 
 						//check for if winner or loser to terminate
-						if(player.getIsWinner() || player.getIsBust())
+						if(player.getIsWinner())
 						{	
+							break;
+						}
+						else if(player.getIsBust())
+						{
+							System.out.printf("\n\n\tBUST");
 							break;
 						}
 					}
@@ -139,9 +139,9 @@ public class BlackjackGameSimulator
 
 				}
 			}
-				//dealer's turn
+			//dealer's turn
 			System.out.printf("\n\n\tLet the fun begin for the Dealer!");
-					//dealer shows second card
+			//dealer shows second card
 			System.out.printf("\n\n\tDealer hand: " + participants.get(0).showHand(0));
 			System.out.printf("\n\tDealer score: %d\n", participants.get(0).getCurrentScore());
 
@@ -151,7 +151,7 @@ public class BlackjackGameSimulator
 			}
 			else
 			{
-					//while dealer score less than 17 //soft 17 stay
+				//while dealer score less than 17 //soft 17 stay
 				while(participants.get(0).getCurrentScore() < 17)
 				{
 					//hit
@@ -162,14 +162,19 @@ public class BlackjackGameSimulator
 					System.out.printf("\n\tDealer score: %d\n", participants.get(0).getCurrentScore());
 
 					//check for if winner or loser to terminate
-					if(participants.get(0).getIsWinner() || participants.get(0).getIsBust())
+					if(participants.get(0).getIsWinner())
 					{	
+						break;
+					}
+					else if(participants.get(0).getIsBust())
+					{
+						System.out.printf("\n\n\tBUST");
 						break;
 					}
 				}
 			}
 
-				//update players for winners and losers and cash amounts
+			//update players for winners and losers and cash amounts
 			System.out.printf(game.payoutAll());
 
 			//check each player for playing another game

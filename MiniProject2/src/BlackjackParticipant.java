@@ -1,13 +1,19 @@
 import java.util.*;
 
-abstract class BlackjackParticipant //implements ?
+/**
+* BlackjackParticipant implements the BlackjackParticipantInterface. BlackjackParticipant is the 
+* parent class to BlackjackPlayer and BlackjackDealer.
+*/
+abstract class BlackjackParticipant implements BlackjackParticipantInterface
 {
 	private int currentScore;
 	private ArrayList<BlackjackCard> hand;
 	private boolean isWinner;
 	private boolean blackjack;
 	private boolean bust;
-
+	/**
+	* The class concatnator
+	*/
 	BlackjackParticipant()
 	{
 		this.currentScore = 0;
@@ -17,14 +23,27 @@ abstract class BlackjackParticipant //implements ?
 		this.bust = false;
 	}
 
+	/**
+	* updateHand() takes input newCards and adds the input newCards to the calling 
+	* participant's hand. This is used for the initial deal to the players and the dealer so a 
+	* blackjack is made. 
+	* @param newCards the cards to be added to the hand
+	* @return N/A
+	*/
 	public void updateHand(ArrayList<BlackjackCard> newCards)
 	{
 		newCards.forEach((newCard) -> this.hand.add(newCard));
 
 		this.checkForBlackjack();
-		this.checkForBust();
 	}
 
+	/**
+	* updateHand() takes input newCard and adds the input newCard to the calling 
+	* participant's hand. This is used for hits so checkForWinner() and checkForBust()
+	* is also made
+	* @param newCard the cards to be added to the hand
+	* @return N/A
+	*/
 	public void updateHand(BlackjackCard newCard)
 	{
 		this.hand.add(newCard);
@@ -33,18 +52,25 @@ abstract class BlackjackParticipant //implements ?
 		this.checkForBust();
 	}
 
+	/**
+	* showHand() returns a string representation of the participant's hand of an input 
+	* number of cards to show. All cards are shown if input is 0 or input is greater than 
+	* the length of 'hand'
+	* @param numberOfCardsToShow the number of cards to show
+	* @return a String representation of the player hand
+	*/
 	public String showHand(int numberOfCardsToShow)
 	{
-		StringBuilder handToDisplay = new StringBuilder("");
+		StringBuilder handToDisplay = new StringBuilder("| ");
 
 		if (numberOfCardsToShow !=0 & numberOfCardsToShow <= hand.size())
 		{
 			for (int cardIterator = 0; cardIterator < hand.size(); cardIterator++)
 			{
 				if(cardIterator < numberOfCardsToShow)
-					handToDisplay.append(" | " + hand.get(cardIterator).toString());
+					handToDisplay.append(hand.get(cardIterator).toString() + " | ");
 				else
-					handToDisplay.append(" | FACE DOWN");
+					handToDisplay.append("FACE DOWN | ");
 			}
 		}
 		else
@@ -55,6 +81,12 @@ abstract class BlackjackParticipant //implements ?
 		return handToDisplay.toString();
 	}
 
+	/**
+	* checkForBlackjack() updates 'this.blackjack' and 'this.isWinner' for the calling
+	* participant. The check is only valid if being called after the first two cards in
+	* in a participant's hand is dealt. Blackjack and isWinner is made true when score is 21
+	* @return N/A 
+	*/
 	private void checkForBlackjack()
 	{
 		if(hand.size() == 2) //only perform check if after adding first two cards
@@ -63,9 +95,9 @@ abstract class BlackjackParticipant //implements ?
 
 			if(!this.blackjack)
 			{
-				currentScore = this.calculateHighScore();
+				currentScore = this.calculateHighScore(); //not possible to acheive blackjack with lowScore
 
-				if(currentScore == 21)
+				if(currentScore == BLACKJACK_WINNER)
 				{
 					this.blackjack = true;
 					this.isWinner = true;
@@ -74,21 +106,26 @@ abstract class BlackjackParticipant //implements ?
 		}
 	}
 
+	/**
+	* checkForBust() updates 'this.bust' for the calling participant. This check is made on 
+	* hand updates for hits. the highScore is used until the highScore is a bust and then the
+	* lowScore is used. 'this.bust' is made true when the low score is a bust
+	* @return N/A
+	*/
 	private void checkForBust()
 	{
 		int currentScoreHigh = 0;
 		int currentScoreLow = 0;
-
 
 		currentScoreLow = this.calculateLowScore();
 		currentScoreHigh = this.calculateHighScore();
 
 		this.currentScore = currentScoreHigh;
 
-		if(currentScoreHigh > 21)
+		if(currentScoreHigh > BLACKJACK_WINNER)
 			this.currentScore = currentScoreLow;
 
-		if (currentScoreLow > 21)
+		if (currentScoreLow > BLACKJACK_WINNER)
 			this.bust = true;
 	}
 
@@ -100,7 +137,7 @@ abstract class BlackjackParticipant //implements ?
 		currentScoreLow = this.calculateLowScore();
 		currentScoreHigh = this.calculateHighScore();
 
-		if(currentScoreHigh == 21 || currentScoreLow == 21)
+		if(currentScoreHigh == BLACKJACK_WINNER || currentScoreLow == BLACKJACK_WINNER)
 			this.isWinner = true;
 	}
 
@@ -113,10 +150,12 @@ abstract class BlackjackParticipant //implements ?
 	{
 		return this.bust;
 	}
+
 	public boolean getIsBlackjack()
 	{
 		return this.blackjack;
 	}
+
 	public int getCurrentScore()
 	{
 		return this.currentScore;
@@ -139,28 +178,27 @@ abstract class BlackjackParticipant //implements ?
 		{
 			if(hand.get(cardIterator).getCardValue() != 1)
 			{
-				//currentScoreHigh += hand.get(cardIterator).getCardValue();
-				if(hand.get(cardIterator).getCardValue() > 10)
-					currentScoreHigh += 10;
+				if(hand.get(cardIterator).getCardValue() > FACE_CARD_VALUE)
+					currentScoreHigh += FACE_CARD_VALUE;
 				else
 					currentScoreHigh += hand.get(cardIterator).getCardValue();
 			}
 			else
 			{
-				currentScoreHigh += 11; //assume ACE is 11 for high score
+				currentScoreHigh += ACE_HI_VALUE;
 			}
 		}
-
 		return currentScoreHigh;
 	}
+
 	private int calculateLowScore()
 	{
 		int currentScoreLow = 0;
 
 		for (int cardIterator = 0; cardIterator < hand.size(); cardIterator++)
 		{
-			if(hand.get(cardIterator).getCardValue() > 10)
-				currentScoreLow += 10;
+			if(hand.get(cardIterator).getCardValue() > FACE_CARD_VALUE)
+				currentScoreLow += FACE_CARD_VALUE;
 			else
 				currentScoreLow += hand.get(cardIterator).getCardValue();
 		}

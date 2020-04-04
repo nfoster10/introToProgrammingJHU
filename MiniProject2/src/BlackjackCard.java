@@ -22,6 +22,7 @@ public class BlackjackCard
 	{
 		return cardValue;
 	}
+
 	public String toString()
 	{
 		String cardName;
@@ -56,6 +57,7 @@ public class BlackjackCard
 	{
 		this.isInDeck = inDeck;
 	}
+	
 	public boolean equals(BlackjackCard comparisonCard)
 	{
 		boolean isSame = false;
