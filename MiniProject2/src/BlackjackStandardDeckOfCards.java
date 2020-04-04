@@ -31,6 +31,14 @@ public class BlackjackStandardDeckOfCards
 
 		return cardRetreived;
 	}
+	private void removeCardFromDeck(BlackjackCard cardToRemove)
+	{
+		for(int cardIterator = 0; cardIterator < standardDeckOfCards.length; cardIterator++)
+		{
+			if(standardDeckOfCards[cardIterator].equals(cardToRemove))
+				standardDeckOfCards[cardIterator].setIsInDeck(false);
+		}
+	}
 
 	private ArrayList<BlackjackCard> getCurrentCardsInDeck()
 	{
@@ -42,12 +50,5 @@ public class BlackjackStandardDeckOfCards
 
 		return currentCardsInDeck;
 	}
-	private void removeCardFromDeck(BlackjackCard cardToRemove)
-	{
-		for(int cardIterator = 0; cardIterator < standardDeckOfCards.length; cardIterator++)
-		{
-			if(standardDeckOfCards[cardIterator].equals(cardToRemove))
-				standardDeckOfCards[cardIterator].setIsInDeck(false);
-		}
-	}
+
 }

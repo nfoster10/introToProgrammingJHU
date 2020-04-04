@@ -21,10 +21,6 @@ public class BlackjackPlayer extends BlackjackParticipant
 		this.playerMoney = playerMoney;
 	}
 
-
-
-
-
 	public boolean setCurrentBet(double inputBet)
 	{
 		boolean validData = false;
@@ -38,9 +34,30 @@ public class BlackjackPlayer extends BlackjackParticipant
 		return validData;
 	}
 
-	public double getCurrentBet()
+	public void win()
 	{
-		return this.currentBet;
+		this.playerMoney += this.currentBet;
+		this.currentBet = 0;
+	}
+	public void lose()
+	{
+		this.playerMoney -= this.currentBet;
+		this.currentBet = 0;
+	}
+	public void tie()
+	{
+		this.currentBet = 0;
+	}
+
+	public double getPlayerMoney()
+	{
+		return this.playerMoney;
+	}
+
+	public void reset()
+	{
+		super.reset();
+		this.currentBet = 0;
 	}
 
 

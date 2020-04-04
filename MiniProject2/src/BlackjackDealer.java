@@ -2,12 +2,12 @@ import java.util.*;
 
 public class BlackjackDealer extends BlackjackParticipant
 {
-	public BlackjackCard dealCardToPlayer(BlackjackStandardDeckOfCards currentDeck)
+	public BlackjackCard dealCardToParticipant(BlackjackStandardDeckOfCards currentDeck)
 	{
 		return currentDeck.getRandomCardFromDeck();
 	}
 
-	public ArrayList<BlackjackCard> dealCardsToPlayer(BlackjackStandardDeckOfCards currentDeck, int numberOfCardsToDeal)
+	public ArrayList<BlackjackCard> dealCardsToParticipant(BlackjackStandardDeckOfCards currentDeck, int numberOfCardsToDeal)
 	{
 		ArrayList<BlackjackCard> hand = new ArrayList<BlackjackCard>();
 
