@@ -1,6 +1,10 @@
 import java.util.*;
 import java.io.*; 
 
+/**
+* BlackjackGameSimulator simulates a game of blackjack until the user indicates to end the program
+* @author Nathaniel Foster
+*/
 public class BlackjackGameSimulator
 {
 	public static void main (String [] elmo)
@@ -191,7 +195,7 @@ public class BlackjackGameSimulator
 						{	
 							System.out.printf("\n\t\tPlayer #%d quit - goodbye!", playerIterator);
 							if(playerIterator != participants.size() - 1)
-								System.out.printf("\n\t\tPlayer #%d now becomes Player #%d", playerIterator + 1, playerIterator);
+								System.out.printf("\n\t\tPlayer #%d now becomes Player #%d and so on...", playerIterator + 1, playerIterator);
 							game.removePlayer(playerIterator);
 							playerIterator--;
 							break;
@@ -205,7 +209,7 @@ public class BlackjackGameSimulator
 					{ 
 						System.out.printf("\n\t\tPlayer #%d out of money - goodbye!", playerIterator);
 						if(playerIterator != participants.size() - 1)
-							System.out.printf("\n\t\tPlayer #%d now becomes Player #%d", playerIterator + 1, playerIterator);
+							System.out.printf("\n\t\tPlayer #%d now becomes Player #%d and so on...", playerIterator + 1, playerIterator);
 						game.removePlayer(playerIterator);
 						playerIterator--;
 						break;

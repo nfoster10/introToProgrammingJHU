@@ -49,7 +49,7 @@ public class BlackjackGame
 
 	/**
 	* getParticipants() is a getter for BLackjackGame.participants
-	* @return an ArrayList<BlackjackParticipant> reference to the participants
+	* @return an ArrayList of BlackjackParticipant reference to the participants
 	*/
 	public ArrayList<BlackjackParticipant> getParticipants()
 	{
@@ -59,7 +59,6 @@ public class BlackjackGame
 	/**
 	* initialDealToAllParticipants() has the dealer deal two cards to all participants including the dealer
 	* itself. If the dealer runs out of cards, a new deck is retreived.
-	* @return N/A
 	*/
 	public void initialDealToAllParticipants()
 	{
@@ -81,7 +80,6 @@ public class BlackjackGame
 	* hit() has the dealer deal one card to the inputParticiapnt. If the dealer runs out of cards,
 	* a new deck is retreived.
 	* @param inputParticipant the participant to receive one card from the dealer
-	* @return N/A
 	*/
 	public void hit(BlackjackParticipant inputParticipant)
 	{
@@ -149,7 +147,6 @@ public class BlackjackGame
 
 	/**
 	* resetForAnotherRound() resets all the participants in a game for another round
-	* @return N/A
 	*/
 	public void resetForAnotherRound()
 	{
@@ -166,7 +163,6 @@ public class BlackjackGame
 	/**
 	* removePlayer() removes a given player from the game
 	* @param playerToRemove indicates the player to be removed
-	* @return N/A
 	*/
 	public void removePlayer(int playerToRemove)
 	{

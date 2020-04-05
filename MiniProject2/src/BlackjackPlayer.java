@@ -3,6 +3,7 @@ import java.util.*;
 /**
 * BlackjackPlayer is a child of the BlackjackPaticipant class. It defines actions
 * specific to a blackjack player that the dealer does not perform.
+* @author Nathaniel Foster
 */
 public class BlackjackPlayer extends BlackjackParticipant
 {
@@ -11,7 +12,6 @@ public class BlackjackPlayer extends BlackjackParticipant
 
 	/**
 	* Class concatenator
-	* @return N/A
 	*/
 	BlackjackPlayer()
 	{
@@ -22,7 +22,6 @@ public class BlackjackPlayer extends BlackjackParticipant
 	/**
 	* Another class concatenator
 	* @param buyIn sets this.playerMoney to buyIn on concatenation
-	* @return N/A
 	*/
 	BlackjackPlayer(double buyIn)
 	{
@@ -32,7 +31,7 @@ public class BlackjackPlayer extends BlackjackParticipant
 
 	/**
 	* setPlayerMoney() is a setter for this.playerMoney for the calling BlackjackPlayer instance
-	* @return N/A
+	* @param playerMoney the input value to which to set this.playerMoney
 	*/
 	public void setPlayerMoney(double playerMoney)
 	{
@@ -41,7 +40,8 @@ public class BlackjackPlayer extends BlackjackParticipant
 
 	/**
 	* setCurrentBet() is a setter for this.currentBet for the calling BlackjackPlayer instance
-	* @return N/A
+	* @param inputBet the input value to which to set this.currentBet
+	* @return boolean true if bet is less than or equal to playerMoney or false
 	*/
 	public boolean setCurrentBet(double inputBet)
 	{
@@ -58,7 +58,6 @@ public class BlackjackPlayer extends BlackjackParticipant
 
 	/**
 	* win() adds the currentBet to the playerMoney and clears the currentBet
-	* @return N/A
 	*/
 	public void win()
 	{
@@ -68,7 +67,6 @@ public class BlackjackPlayer extends BlackjackParticipant
 
 	/**
 	* lose() minuses the currentBet from the playerMoney and clears the currentBet
-	* @return N/A
 	*/
 	public void lose()
 	{
@@ -78,7 +76,6 @@ public class BlackjackPlayer extends BlackjackParticipant
 
 	/**
 	* tie() clears the currentBet only
-	* @return N/A
 	*/
 	public void tie()
 	{
@@ -96,13 +93,10 @@ public class BlackjackPlayer extends BlackjackParticipant
 
 	/**
 	* reset() calls BlackjackParticipant.reset() and clears the currentBet
-	* @return N/A
 	*/
 	public void reset()
 	{
 		super.reset();
 		this.currentBet = 0;
 	}
-
-
 }

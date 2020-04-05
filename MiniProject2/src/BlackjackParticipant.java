@@ -2,7 +2,9 @@ import java.util.*;
 
 /**
 * BlackjackParticipant implements the BlackjackParticipantInterface. BlackjackParticipant is the 
-* parent class to BlackjackPlayer and BlackjackDealer.
+* parent class to BlackjackPlayer and BlackjackDealer. It defines attributes and methods used by all
+* participants in a blackjack game.
+* @author Nathaniel Foster
 */
 abstract class BlackjackParticipant implements BlackjackParticipantInterface
 {
@@ -11,9 +13,9 @@ abstract class BlackjackParticipant implements BlackjackParticipantInterface
 	private boolean isWinner;
 	private boolean blackjack;
 	private boolean bust;
+
 	/**
 	* The class concatnator
-	* @return N/A
 	*/
 	BlackjackParticipant()
 	{
@@ -29,7 +31,6 @@ abstract class BlackjackParticipant implements BlackjackParticipantInterface
 	* participant's hand. This is used for the initial deal to the players and the dealer so a 
 	* blackjack is made. 
 	* @param newCards the cards to be added to the hand
-	* @return N/A
 	*/
 	public void updateHand(ArrayList<BlackjackCard> newCards)
 	{
@@ -43,7 +44,6 @@ abstract class BlackjackParticipant implements BlackjackParticipantInterface
 	* participant's hand. This is used for hits so checkForWinner() and checkForBust()
 	* is also made
 	* @param newCard the cards to be added to the hand
-	* @return N/A
 	*/
 	public void updateHand(BlackjackCard newCard)
 	{
@@ -65,88 +65,13 @@ abstract class BlackjackParticipant implements BlackjackParticipantInterface
 		StringBuilder handToDisplay = new StringBuilder("| ");
 
 		if (numberOfCardsToShow !=0 & numberOfCardsToShow <= hand.size())
-		{
 			for (int cardIterator = 0; cardIterator < hand.size(); cardIterator++)
-			{
-				if(cardIterator < numberOfCardsToShow)
-					handToDisplay.append(hand.get(cardIterator).toString() + " | ");
-				else
-					handToDisplay.append("FACE DOWN | ");
-			}
-		}
+				handToDisplay.append(cardIterator < numberOfCardsToShow? 
+					hand.get(cardIterator).toString() + " | " : "FACE DOWN | ");
 		else
-		{
-			hand.forEach((card) -> handToDisplay.append(" | " + card.toString()));	
-		}
+			hand.forEach((card) -> handToDisplay.append(card.toString() + " | "));	
 
 		return handToDisplay.toString();
-	}
-
-	/**
-	* checkForBlackjack() updates 'this.blackjack' and 'this.isWinner' for the calling
-	* participant. The check is only valid if being called after the first two cards in
-	* in a participant's hand is dealt. Blackjack and isWinner is made true when score is 21
-	* @return N/A 
-	*/
-	private void checkForBlackjack()
-	{
-		if(hand.size() == 2) //only perform check if after adding first two cards
-		{
-			this.currentScore = 0;
-
-			if(!this.blackjack)
-			{
-				currentScore = this.calculateHighScore(); //not possible to acheive blackjack with lowScore
-
-				if(currentScore == BLACKJACK_WINNER)
-				{
-					this.blackjack = true;
-					this.isWinner = true;
-				}
-			}
-		}
-	}
-
-	/**
-	* checkForBust() updates 'this.bust' for the calling participant. This check is made on 
-	* hand updates for hits. the highScore is used until the highScore is a bust and then the
-	* lowScore is used. 'this.bust' is made true when the low score is a bust. 'this.currentScore'
-	* is also updated.
-	* @return N/A
-	*/
-	private void checkForBust()
-	{
-		int currentScoreHigh = 0;
-		int currentScoreLow = 0;
-
-		currentScoreLow = this.calculateLowScore();
-		currentScoreHigh = this.calculateHighScore();
-
-		this.currentScore = currentScoreHigh;
-
-		if(currentScoreHigh > BLACKJACK_WINNER)
-			this.currentScore = currentScoreLow;
-
-		if (currentScoreLow > BLACKJACK_WINNER)
-			this.bust = true;
-	}
-
-	/**
-	* checkForWinner() updates 'isWinner' for the calling participant. This check is made on 
-	* hand updates for hits. if either the high or low score qualifies for a winner,
-	* 'this.isWinner' is made true
-	* @return N/A
-	*/
-	private void checkForWinner()
-	{
-		int currentScoreHigh = 0;
-		int currentScoreLow = 0;
-
-		currentScoreLow = this.calculateLowScore();
-		currentScoreHigh = this.calculateHighScore();
-
-		if(currentScoreHigh == BLACKJACK_WINNER || currentScoreLow == BLACKJACK_WINNER)
-			this.isWinner = true;
 	}
 
 	/**
@@ -187,7 +112,7 @@ abstract class BlackjackParticipant implements BlackjackParticipantInterface
 
 	/**
 	* reset() resets all the attributes of a BlackjackParticipant
-	* @return N/A
+	
 	*/
 	public void reset()
 	{
@@ -242,5 +167,70 @@ abstract class BlackjackParticipant implements BlackjackParticipantInterface
 		}
 
 		return currentScoreLow;
+	}
+
+	/**
+	* checkForBlackjack() updates 'this.blackjack' and 'this.isWinner' for the calling
+	* participant. The check is only valid if being called after the first two cards in
+	* in a participant's hand is dealt. Blackjack and isWinner is made true when score is 21
+	 
+	*/
+	private void checkForBlackjack()
+	{
+		if(hand.size() == 2) //only perform check if after adding first two cards
+		{
+			this.currentScore = 0;
+
+			if(!this.blackjack)
+			{
+				currentScore = this.calculateHighScore(); //not possible to acheive blackjack with lowScore
+
+				if(currentScore == BLACKJACK_WINNER)
+				{
+					this.blackjack = true;
+					this.isWinner = true;
+				}
+			}
+		}
+	}
+
+	/**
+	* checkForBust() updates 'this.bust' for the calling participant. This check is made on 
+	* hand updates for hits. the highScore is used until the highScore is a bust and then the
+	* lowScore is used. 'this.bust' is made true when the low score is a bust. 'this.currentScore'
+	* is also updated.
+	*/
+	private void checkForBust()
+	{
+		int currentScoreHigh = 0;
+		int currentScoreLow = 0;
+
+		currentScoreLow = this.calculateLowScore();
+		currentScoreHigh = this.calculateHighScore();
+
+		this.currentScore = currentScoreHigh;
+
+		if(currentScoreHigh > BLACKJACK_WINNER)
+			this.currentScore = currentScoreLow;
+
+		if (currentScoreLow > BLACKJACK_WINNER)
+			this.bust = true;
+	}
+
+	/**
+	* checkForWinner() updates 'isWinner' for the calling participant. This check is made on 
+	* hand updates for hits. if either the high or low score qualifies for a winner,
+	* 'this.isWinner' is made true
+	*/
+	private void checkForWinner()
+	{
+		int currentScoreHigh = 0;
+		int currentScoreLow = 0;
+
+		currentScoreLow = this.calculateLowScore();
+		currentScoreHigh = this.calculateHighScore();
+
+		if(currentScoreHigh == BLACKJACK_WINNER || currentScoreLow == BLACKJACK_WINNER)
+			this.isWinner = true;
 	}
 }
