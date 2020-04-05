@@ -30,7 +30,7 @@ public class BlackjackGame
 	* addPlayers() adds new players to the game paritipant list but the players are added without any money.
 	* the amount of players added must be greater than 0
 	* @param newPlayers the amount of new players to be added to the game
-	* @return boolean validData is returned true if greater than 0 and less than 25
+	* @return boolean validData is returned true if greater than 0
 	*/
 	public boolean addPlayers(int newPlayers)
 	{
