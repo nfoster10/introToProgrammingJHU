@@ -13,6 +13,7 @@ abstract class BlackjackParticipant implements BlackjackParticipantInterface
 	private boolean bust;
 	/**
 	* The class concatnator
+	* @return N/A
 	*/
 	BlackjackParticipant()
 	{
@@ -109,7 +110,8 @@ abstract class BlackjackParticipant implements BlackjackParticipantInterface
 	/**
 	* checkForBust() updates 'this.bust' for the calling participant. This check is made on 
 	* hand updates for hits. the highScore is used until the highScore is a bust and then the
-	* lowScore is used. 'this.bust' is made true when the low score is a bust
+	* lowScore is used. 'this.bust' is made true when the low score is a bust. 'this.currentScore'
+	* is also updated.
 	* @return N/A
 	*/
 	private void checkForBust()
@@ -129,6 +131,12 @@ abstract class BlackjackParticipant implements BlackjackParticipantInterface
 			this.bust = true;
 	}
 
+	/**
+	* checkForWinner() updates 'isWinner' for the calling participant. This check is made on 
+	* hand updates for hits. if either the high or low score qualifies for a winner,
+	* 'this.isWinner' is made true
+	* @return N/A
+	*/
 	private void checkForWinner()
 	{
 		int currentScoreHigh = 0;
@@ -141,26 +149,46 @@ abstract class BlackjackParticipant implements BlackjackParticipantInterface
 			this.isWinner = true;
 	}
 
+	/**
+	* getIsWinner() is a getter for this.isWinner
+	* @return this.isWinner for the calling BlackjackParticipant object
+	*/
 	public boolean getIsWinner()
 	{
 		return this.isWinner;
 	}
 
+	/**
+	* getIsBust() is a getter for this.bust
+	* @return this.bust for the calling BlackjackParticipant object
+	*/
 	public boolean getIsBust()
 	{
 		return this.bust;
 	}
 
+	/**
+	* getIsBlackjack() is a getter for this.blackjack
+	* @return this.blackjack for the calling BlackjackParticipant object
+	*/
 	public boolean getIsBlackjack()
 	{
 		return this.blackjack;
 	}
 
+	/**
+	* getCurrentScore() is a getter for this.currentScore
+	* @return this.currentScore for the calling BlackjackParticipant object
+	*/
 	public int getCurrentScore()
 	{
 		return this.currentScore;
 	}
 
+	/**
+	* reset() resets all the attributes of a BlackjackParticipant
+	* @return N/A
+	*/
 	public void reset()
 	{
 		this.currentScore = 0;
@@ -170,6 +198,11 @@ abstract class BlackjackParticipant implements BlackjackParticipantInterface
 		this.bust = false;
 	}
 
+	/**
+	* calculateHighScore() calculates the score from the hand of the calling BlackjackParticipant instance.
+	* Ace's are assumed to be worth 11 for the high score and use ACE_HI_VALUE
+	* @return integer representation of the participants hand based on the participant's current hand
+	*/
 	private int calculateHighScore()
 	{
 		int currentScoreHigh = 0;
@@ -191,6 +224,11 @@ abstract class BlackjackParticipant implements BlackjackParticipantInterface
 		return currentScoreHigh;
 	}
 
+	/**
+	* calculateLowScore() calculates the score from the hand of the calling BlackjackParticipant instance.
+	* Ace's are assumed to be worth 1 for the low score
+	* @return integer repsentation of the participants hand based on the participant's current hand
+	*/
 	private int calculateLowScore()
 	{
 		int currentScoreLow = 0;

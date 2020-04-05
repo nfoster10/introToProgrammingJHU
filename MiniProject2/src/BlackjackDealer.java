@@ -1,5 +1,9 @@
 import java.util.*;
 
+/**
+* BlackjackDealer is a child of the BlackjackPaticipant class. It defines actions
+* specific to a blackjack dealer that players do not perform.
+*/
 public class BlackjackDealer extends BlackjackParticipant
 {
 	public BlackjackCard dealCardToParticipant(BlackjackStandardDeckOfCards currentDeck)
